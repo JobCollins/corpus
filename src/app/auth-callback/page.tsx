@@ -14,7 +14,13 @@ const Page = () => {
     const query = trpc.authCallBack.useQuery(undefined, {
         retry: true,
         retryDelay: 500,
-      });
+    });
+
+      console.log(query);
+
+      console.log("error: ", query.isError);
+      
+      
       
       // Check for errors in the query result
       if (query.error) {
@@ -26,9 +32,12 @@ const Page = () => {
           console.error("An error occurred:", query.error);
         }
       }
+
+      console.log("issuccess: ", query.isSuccess);
+      
       
       // Continue with other logic based on the query result
-      if (query.data?.success) {
+      if (query.isSuccess) {
         router.push(origin ? `/${origin}` : '/dashboard');
       }
     return (
