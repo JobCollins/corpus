@@ -15,7 +15,7 @@ const UploadButton = () => {
             <Button>Upload PDF</Button>
         </DialogTrigger>
         <DialogContent>
-            example
+            
         </DialogContent>
     </Dialog>
   )

@@ -6,6 +6,8 @@ import { Inter } from 'next/font/google'
 import NavBar from "@/components/ui/NavBar";
 import Providers from "@/components/Providers";
 
+import "react-loading-skeleton/dist/skeleton.css"
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
