@@ -11,27 +11,26 @@ const Page = () => {
     const searchParams = useSearchParams()
     const origin = searchParams.get('origin')
 
-    const { data, isLoading, error } = trpc.authCallBack.useQuery(undefined, {
+    const query = trpc.authCallBack.useQuery(undefined, {
         retry: true,
         retryDelay: 500,
-    })
-
-    const [redirected, setRedirected] = useState(false);
-
-    useEffect(() => {
-        if (data?.success) {
-                // user is synced to db
-                console.log('Data fetched successfully:', data);
-                setRedirected(true);  // Ensure redirect happens only once
-                router.push(origin ? `/${origin}` : '/dashboard')
-            
+      });
+      
+      // Check for errors in the query result
+      if (query.error) {
+        const errData = query.error.data;
+        if (errData?.code === 'UNAUTHORIZED') {
+          router.push('/sign-in');
+        } else {
+          // Handle other types of errors
+          console.error("An error occurred:", query.error);
         }
-        else if (error && error.data?.code === 'UNAUTHORIZED') {
-            setRedirected(true);  // Prevent re-execution
-            router.push('/sign-in')
-        }
-
-    }, [data, origin, router, error]);
+      }
+      
+      // Continue with other logic based on the query result
+      if (query.data?.success) {
+        router.push(origin ? `/${origin}` : '/dashboard');
+      }
     return (
         <div className="w-full mt-24 flex justify-center">
             <div className="flex flex-col items-center gap-2">
