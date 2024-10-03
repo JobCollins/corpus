@@ -7,6 +7,7 @@ import NavBar from "@/components/ui/NavBar";
 import Providers from "@/components/Providers";
 
 import "react-loading-skeleton/dist/skeleton.css"
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -37,8 +38,8 @@ export default function RootLayout({
     <html lang="en">
       <Providers>
       <body
-        className={cn('min-h-screen font-sans antialiased grainy', inter.className)}
-      >
+        className={cn('min-h-screen font-sans antialiased grainy', inter.className)}>
+          <Toaster />
         <NavBar/>
         {children}
       </body>
