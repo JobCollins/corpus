@@ -8,7 +8,7 @@ import React from 'react'
 
 interface PageProps {
     params:{
-        fileid
+        fileid: string
     }
 }
 
@@ -29,6 +29,8 @@ const Page = async ({params}: PageProps) => {
             userId: user.id
         }
     })
+
+    console.log("file url?: ", file?.url)
 
     if(!file) notFound()
     
