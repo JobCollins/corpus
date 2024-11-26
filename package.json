@@ -34,7 +34,7 @@
     "@trpc/react-query": "^11.0.0-rc.532",
     "@trpc/server": "^11.0.0-rc.532",
     "@uploadthing/react": "^7.0.2",
-    "ai": "^3.4.10",
+    "ai": "^3.0.19",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
