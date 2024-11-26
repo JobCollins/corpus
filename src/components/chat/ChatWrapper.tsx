@@ -15,10 +15,20 @@ interface ChatWrapperProps {
 
 const ChatWrapper = ({fileId}: ChatWrapperProps) => {
 
+  const temp = true
+
   const {data, isLoading} = trpc.getFileUploadStatus.useQuery({
     fileId
   }, {
-    refetchInterval: (data) => data?.status === "SUCCESS" || data?.status === "FAILED" ? false : 500
+    refetchInterval: (data) => {
+      const status = data.state.data
+
+      if (status === undefined) {
+                    return 500
+      } else {
+          return status.status === 'SUCCESS' || status.status === 'FAILED' ? false : 500
+      }
+    }
   })
   if (isLoading) return (
     <div className="relative min-h-full bg-zinc-50 flex divide-y divide-zinc-200 flex-col justify-between gap-2">
