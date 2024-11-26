@@ -7,6 +7,7 @@ import {
   import { useToast } from '@/hooks/use-toast'
   import { useMutation } from '@tanstack/react-query'
   import { trpc } from '@/app/_trpc/client'
+import { INFINITE_QUERY_LIMIT } from '@/config/infinite-query'
 //   import { INFINITE_QUERY_LIMIT } from '@/config/infinite-query'
   
   type StreamResponse = {
