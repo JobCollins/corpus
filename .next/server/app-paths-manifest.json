@@ -1,5 +1,4 @@
 {
-  "/dashboard/[fileid]/page": "app/dashboard/[fileid]/page.js",
-  "/pricing/page": "app/pricing/page.js",
+  "/api/trpc/[trpc]/route": "app/api/trpc/[trpc]/route.js",
   "/dashboard/billing/page": "app/dashboard/billing/page.js"
 }
