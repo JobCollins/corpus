@@ -1,6 +1,5 @@
 {
-  "/api/message/route": "app/api/message/route.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/api/trpc/[trpc]/route": "app/api/trpc/[trpc]/route.js",
+  "/pricing/page": "app/pricing/page.js",
+  "/dashboard/billing/page": "app/dashboard/billing/page.js",
   "/dashboard/[fileid]/page": "app/dashboard/[fileid]/page.js"
 }
