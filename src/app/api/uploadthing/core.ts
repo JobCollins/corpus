@@ -1,7 +1,7 @@
 import { db } from "@/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
-import { UploadThingError } from "uploadthing/server";
+// import { UploadThingError } from "uploadthing/server";
 import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
 import { OpenAIEmbeddings } from "@langchain/openai";
 import { PineconeStore } from "@langchain/pinecone";
@@ -16,7 +16,7 @@ export const ourFileRouter = {
   // Define as many FileRoutes as you like, each with a unique routeSlug
   pdfUploader: f({ pdf: { maxFileSize: "4MB" } })
     // Set permissions and file types for this FileRoute
-    .middleware(async ({ req }) => {
+    .middleware(async ({  }) => {
 
       const {getUser} = getKindeServerSession()
       const user = await getUser()
@@ -45,7 +45,7 @@ export const ourFileRouter = {
 
         const pageLevelDocs = await loader.load()
 
-        const pagesAmt = pageLevelDocs.length
+        // const pagesAmt = pageLevelDocs.length
 
         // vectorixze and index entire doc
         const pineconeIndex = pinecone.Index("corpus")
@@ -70,6 +70,8 @@ export const ourFileRouter = {
           }
         })
       } catch (err) {
+        console.log(err);
+        
         await db.file.update({
           data: {
             uploadStatus: "FAILED"

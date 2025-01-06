@@ -8,7 +8,7 @@ import { OpenAIEmbeddings } from '@langchain/openai'
 import { PineconeStore } from "@langchain/pinecone";
 import { NextRequest } from 'next/server'
 
-import { streamText } from 'ai'
+// import { streamText } from 'ai'
 import { OpenAIStream, StreamingTextResponse } from 'ai'
 import { pinecone } from '@/lib/pinecone'
 
