@@ -31,11 +31,17 @@ export const appRouter = router({
     })
 
     if (!dbUser) {
+      const userData = await user;
+
+      // Check if email is null
+      if (!userData.email) {
+        throw new Error("User email is required but is null");
+      }
       // create user in db
       await db.user.create({
         data: {
-          id: (await user).id,
-          email: (await user).email,
+          id: userData.id,
+          email: userData.email,
         },
       })
     }
