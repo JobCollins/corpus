@@ -26,7 +26,7 @@ const BillingForm = ({
 }: BillingFormProps) => {
   const { toast } = useToast()
 
-  const { mutate: createStripeSession, isLoading } =
+  const { mutate: createStripeSession, status } =
     trpc.createStripeSession.useMutation({
       onSuccess: ({ url }) => {
         if (url) window.location.href = url
@@ -39,6 +39,9 @@ const BillingForm = ({
         }
       },
     })
+  
+  // Check if it's loading
+  const isLoading = status === 'pending';
 
   return (
     <MaxWidthWrapper className='max-w-5xl'>
