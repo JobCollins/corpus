@@ -11,7 +11,7 @@ const Page = () => {
     const searchParams = useSearchParams()
     const origin = searchParams.get('origin')
 
-    const query = trpc.authCallBack.useQuery(undefined, {
+    const query = trpc.authCallback.useQuery(undefined, {
         retry: true,
         retryDelay: 500,
     });

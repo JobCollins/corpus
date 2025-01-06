@@ -61,7 +61,6 @@ export async function POST(request: Request) {
         session.subscription as string
         
       )
-    console.log("sub", subscription);
     
     await db.user.update({
       where: {
