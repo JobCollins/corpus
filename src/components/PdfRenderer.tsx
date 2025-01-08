@@ -24,7 +24,7 @@ import PdfFullScreen from './PdfFullScreen';
 // pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 // GlobalWorkerOptions.workerSrc = '/static/pdf.worker.js';
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  `//unpkg.com/pdfjs-dist@${pdfjs.version}/legacy/build/pdf.worker.min.mjs`,
+  'pdfjs-dist/build/pdf.worker.min.mjs',
   import.meta.url,
 ).toString();
 
