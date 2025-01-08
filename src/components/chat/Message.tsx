@@ -76,7 +76,7 @@ const Message = forwardRef<HTMLDivElement, MessageProps>(
                   'text-xs select-none mt-2 w-full text-right',
                   {
                     'text-zinc-500': !message.isUserMessage,
-                    'text-blue-300': message.isUserMessage,
+                    'text-purple-300': message.isUserMessage,
                   }
                 )}>
                 {format(
