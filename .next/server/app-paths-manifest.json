@@ -1,10 +1,9 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
   "/dashboard/page": "app/dashboard/page.js",
   "/dashboard/billing/page": "app/dashboard/billing/page.js",
-  "/pricing/page": "app/pricing/page.js",
-  "/dashboard/[fileid]/page": "app/dashboard/[fileid]/page.js",
   "/page": "app/page.js",
+  "/dashboard/[fileid]/page": "app/dashboard/[fileid]/page.js",
   "/api/trpc/[trpc]/route": "app/api/trpc/[trpc]/route.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/api/message/route": "app/api/message/route.js",
+  "/pricing/page": "app/pricing/page.js"
 }
