@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Inter } from 'next/font/google'
-import NavBar from "@/components/ui/NavBar";
+import NavBar from "@/components/NavBar";
 import Providers from "@/components/Providers";
 
 import "react-loading-skeleton/dist/skeleton.css"
