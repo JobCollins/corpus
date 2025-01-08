@@ -10,9 +10,9 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
 
 export async function getUserSubscriptionPlan() {
   const { getUser } = getKindeServerSession()
-  const user = getUser()
+  const user = await getUser()
 
-  if (!(await user).id) {
+  if (!user || !user.id) {
     return {
       ...PLANS[0],
       isSubscribed: false,
@@ -23,7 +23,7 @@ export async function getUserSubscriptionPlan() {
 
   const dbUser = await db.user.findFirst({
     where: {
-      id: (await user).id,
+      id: user.id,
     },
   })
 
@@ -53,6 +53,7 @@ export async function getUserSubscriptionPlan() {
     )
     isCanceled = stripePlan.cancel_at_period_end
   }
+
 
   return {
     ...plan,
