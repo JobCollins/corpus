@@ -23,14 +23,19 @@ import PdfFullScreen from './PdfFullScreen';
 // pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.mjs`
 // pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 // GlobalWorkerOptions.workerSrc = '/static/pdf.worker.js';
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url,
-).toString();
+// pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+//   '//unpkg.com/pdfjs-dist@4.4.168/legacy/build/pdf.worker.min.mjs',
+//   import.meta.url,
+// ).toString();
+
+pdfjs.GlobalWorkerOptions.workerSrc = 'https://unpkg.com/pdfjs-dist@4.4.168/legacy/build/pdf.worker.min.mjs';
+
 
 interface PdfRendererProps {
   url: string
 }
+
+console.log('pdfjs version ', pdfjs.version);
 
 
 const PdfRenderer = ({url}: PdfRendererProps) => {
