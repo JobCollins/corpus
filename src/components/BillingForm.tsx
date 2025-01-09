@@ -38,6 +38,14 @@ const BillingForm = ({
           })
         }
       },
+      onError: (error) => {
+        console.error("Error:", error);
+        toast({
+          title: "Failed to start subscription",
+          description: error.message || "An unknown error occurred.",
+          variant: "destructive",
+        });
+      },
     })
   
   // Check if it's loading
@@ -74,7 +82,7 @@ const BillingForm = ({
               <p className='rounded-full text-xs font-medium'>
                 {subscriptionPlan.isCanceled
                   ? 'Your plan will be canceled on '
-                  : 'Your plan renews on'}
+                  : 'Your plan renews on '}
                 {format(
                   subscriptionPlan.stripeCurrentPeriodEnd!,
                   'dd.MM.yyyy'
