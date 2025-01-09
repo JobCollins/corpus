@@ -17,7 +17,7 @@ export default function Home() {
         Transform your  <span className="text-violet-600">documents</span> into <span className="text-purple-500">conversations</span> and <span className="text-purple-500">answers</span> instantly.
       </h1>
       <p className="mt-5 max-w-prose text-zinc-700 sm:text-lg">
-        Corpus allows you to have conversations with any PDF document. Upload your pdf file and ask away!
+        Corpus saves you the lengthy read and unlocks the insights you need in seconds.
       </p>
       <Link className={buttonVariants({size:'lg', className:'mt-5'})} href='/dashboard' target="_blank">
         <span className="text-white-800 font-extrabold">Get started</span><ArrowRight className="ml-5 h-5 w-5"/>
