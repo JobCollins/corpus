@@ -98,7 +98,7 @@ const UploadDropzone = ({isSubscribed}: {isSubscribed:boolean}) => {
                                 <p className="mb-2 text-sm text-zinc-700">
                                     <span className="font-semibold">Click to upload</span> or Drag and Drop
                                 </p>
-                                <p className='text-xs text-zinc-500'>PDF (up to 4MB) </p>
+                                <p className='text-xs text-zinc-500'>PDF (up to {isSubscribed? "16" : "4"}MB) </p>
                             </div>
                             {acceptedFiles && acceptedFiles[0] ? (
                                 <div className="max-w-xs bg-white flex items-center rounded-md overflow-hidden outline outline-[1px] outline-zinc-200 divide-x divide-zinc-200">
