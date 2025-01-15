@@ -3,19 +3,21 @@ import React, { useState } from 'react'
 import { Dialog, DialogContent, DialogTrigger } from './ui/dialog'
 import { Button } from './ui/button'
 
-import Dropzone from "react-dropzone"
+import Dropzone, {useDropzone} from "react-dropzone"
 import { Cloud, File, Loader2 } from 'lucide-react'
 import { Progress } from './ui/progress'
 import { useUploadThing } from '@/lib/uploadthing'
 import { useToast } from '@/hooks/use-toast'
 import { trpc } from '@/app/_trpc/client'
 import { useRouter } from 'next/navigation'
+import { cn } from '@/lib/utils'
 
 const UploadDropzone = ({isSubscribed}: {isSubscribed:boolean}) => {
     const router = useRouter()
 
     const [isUploading, setIsUploading] = useState(false)
     const [uploadProgress, setUploadProgress] = useState(0)
+    const [isHovering, setIsHovering] = useState(false)
 
     const  { toast } = useToast()
 
@@ -47,9 +49,14 @@ const UploadDropzone = ({isSubscribed}: {isSubscribed:boolean}) => {
         return interval
     }
 
+    const { open } = useDropzone()
+
     return(
-        <Dropzone multiple={false} onDrop={async (acceptedFile) => {
+        <Dropzone multiple={false} onDragEnter={() => setIsHovering(true)}
+        onDragLeave={() => setIsHovering(false)}
+        noClick={true} onDrop={async (acceptedFile) => {
             // console.log(acceptedFiles);
+            setIsHovering(false)
             setIsUploading(true)
 
             const progressInterval = startSimulatedProgress()
@@ -90,7 +97,10 @@ const UploadDropzone = ({isSubscribed}: {isSubscribed:boolean}) => {
             
         }}>
             {({getRootProps, getInputProps, acceptedFiles}) => (
-                <div {...getRootProps()} className='border h-64 m-4 border-dashed border-gray-300 rounded-lg' >
+                <div onClick={open} {...getRootProps()} className={cn(
+                    'm-4 h-64 rounded-lg border border-dashed border-zinc-300 bg-zinc-50 p-4 dark:border-2 dark:border-zinc-800 dark:bg-zinc-900/25',
+                    isHovering && 'bg-zinc-100 dark:bg-zinc-900'
+                  )}>
                     <div className="flex items-center justify-center h-full w-full">
                         <label htmlFor="dropzone-file" className='flex flex-col items-center justify-center w-full h-full rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100'>
                             <div className="flex flex-col items-center justify-center pt-6 pb-6">
